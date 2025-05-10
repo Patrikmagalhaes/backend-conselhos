@@ -32,6 +32,7 @@ export const editarPersonagem = async (req, res) => {
 
     }
 }
+
 export const deletarPersonagem = async (req, res) => {
     try {
         const alteraPersonagem = await Personagem.findByIdAndDelete(req.params.id)
