@@ -26,7 +26,7 @@ async function gerarResposta(prompt) {
     console.log(respostaIa.choices[0].message.content)
     const partes = respostaIa.choices[0].message.content
     const arrayResposta = partes.split(/<\/think>\s*/i);
-    const resultado = arrayResposta[1]?.trim() || '';
+    const resultado = arrayResposta[1]?.trim();
     console.log('resultado:', resultado)
 
     return resultado
