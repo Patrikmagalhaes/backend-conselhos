@@ -2,7 +2,7 @@ import mongoose from "mongoose";
 
 const PersonagemSchema = new mongoose.Schema({
 
-  nome: {
+   nome: {
     type: String,
     required: true,
   },
@@ -18,14 +18,6 @@ const PersonagemSchema = new mongoose.Schema({
     type: String,
     required: true,
   },
-  tom: {
-    type: String,
-    required: true,
-  },
-  estilo_linguagem: {
-    type: String,
-    required: true,
-  },
   frase_icone: {
     type: String,
     required: true,
@@ -34,13 +26,11 @@ const PersonagemSchema = new mongoose.Schema({
     type: [String],
     default: [],
   },
-  contexto_prompt: {
+  image_link: {
     type: String,
-    required: true,
-  },
+    required: true // ou `false` se quiser tornar opcional
+  }
 }, {
   timestamps: true,
 });
-
-
 export default mongoose.model("Personagem", PersonagemSchema)

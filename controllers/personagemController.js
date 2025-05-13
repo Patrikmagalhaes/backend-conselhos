@@ -14,6 +14,7 @@ export const listarPersonagens = async (req, res) => {
     try {
         const todosPersonagens = await Personagem.find()
         res.json(todosPersonagens)
+        console.log(todosPersonagens)
     } catch (error) {
         console.log({ error: error })
     }

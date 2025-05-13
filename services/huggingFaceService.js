@@ -1,4 +1,4 @@
-import { chatCompletion, InferenceClient } from "@huggingface/inference";
+import {InferenceClient } from "@huggingface/inference";
 import dotenv from 'dotenv'
 
 dotenv.config()
