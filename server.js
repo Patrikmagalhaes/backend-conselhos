@@ -2,6 +2,7 @@ import express from "express"
 import dotenv from "dotenv"
 import mongoose from "mongoose"
 import personagemRoutes from './routes/personagensRoutes.js'
+import  iaRoutes from './routes/iaRoutes.js'
 
 dotenv.config()
 
@@ -11,6 +12,7 @@ const PORT = 3000
 app.use(express.json())
 
 app.use('/api/personagem', personagemRoutes)
+app.use('/api/ia', iaRoutes)
 
 const connectDB = async () => {
 
