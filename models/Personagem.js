@@ -1,36 +1,37 @@
 import mongoose from "mongoose";
 
-const PersonagemSchema = new mongoose.Schema({
-
-   nome: {
+const characterSchema = new mongoose.Schema({
+  name: {
     type: String,
     required: true,
+    trim: true
   },
-  ocupacao: {
+  birth: {
+    type: Date,
+    required: true
+  },
+  death: {
+    type: Date,
+    required: false // pode ter personagem vivo
+  },
+  description: {
     type: String,
-    required: true,
+    required: true
   },
-  vida: {
+  avatarUrl: {
     type: String,
-    required: true,
+    required: false
   },
-  descricao: {
-    type: String,
-    required: true,
-  },
-  frase_icone: {
-    type: String,
-    required: true,
-  },
-  curiosidades: {
-    type: [String],
-    default: [],
-  },
-  image_link: {
-    type: String,
-    required: true // ou `false` se quiser tornar opcional
+  promptConfig: {
+    style: {
+      type: String,
+      required: true
+    },
+    systemMessage: {
+      type: String,
+      required: true
+    }
   }
-}, {
-  timestamps: true,
-});
-export default mongoose.model("Personagem", PersonagemSchema)
+}, { timestamps: true }); // cria createdAt e updatedAt automaticamente
+
+export default mongoose.model("Personagem", characterSchema)
