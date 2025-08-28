@@ -1,17 +1,14 @@
 import express from "express"
-import { criarPersonagem, deletarPersonagem, editarPersonagem, listarPersonagens } from "../controllers/personagemController.js"
+import { createCharacter, deleteCharacter, editCharacter, listCharacter } from "../controllers/personagemController.js"
 
 const router = express.Router()
-//ready
-router.get('/', listarPersonagens)
 
-//Create
-router.post('/', criarPersonagem)
+router.post('/', createCharacter)
 
-//Update
-router.put('/:id', editarPersonagem)
+router.get('/', listCharacter)
 
-//Delete
-router.delete('/:id', deletarPersonagem)
+router.put('/:id', editCharacter)
+
+router.delete('/:id', deleteCharacter)
 
 export default router

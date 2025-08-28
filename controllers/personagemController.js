@@ -1,43 +1,43 @@
 import Character from "../models/Character.js"
 
-export const criarPersonagem = async (req, res) => {
+export const createCharacter = async (req, res) => {
     try {
-        const novoPersonagem = await Character.create(req.body)
-        res.json(novoPersonagem)
+        const newCharacter = await Character.create(req.body)
+        res.json(newCharacter)
     } catch (error) {
         console.log({ error: error })
 
     }
 }
 
-export const listarPersonagens = async (req, res) => {
+export const listCharacter = async (req, res) => {
     try {
-        const todosPersonagens = await Personagem.find()
-        res.json(todosPersonagens)
-        console.log(todosPersonagens)
+        const alllistCharacter = await Character.find()
+        res.json(alllistCharacter)
+        console.log(alllistCharacter)
     } catch (error) {
         console.log({ error: error })
     }
 }
 
-export const editarPersonagem = async (req, res) => {
+export const editCharacter = async (req, res) => {
     try {
-        const alteraPersonagem = await Personagem.findByIdAndUpdate(
+        const putCharacter = await Character.findByIdAndUpdate(
             req.params.id,
             req.body,
             { new: true })
 
-        res.json(alteraPersonagem)
+        res.json(putCharacter)
     } catch (error) {
         console.log({ error: error })
 
     }
 }
 
-export const deletarPersonagem = async (req, res) => {
+export const deleteCharacter = async (req, res) => {
     try {
-        const alteraPersonagem = await Personagem.findByIdAndDelete(req.params.id)
-        res.json(alteraPersonagem)
+        const delCharacter = await Character.findByIdAndDelete(req.params.id)
+        res.json(delCharacter)
     } catch (error) {
         console.log({ error: error })
 
