@@ -1,8 +1,8 @@
-import Personagem from "../models/Personagem.js"
+import Character from "../models/Character.js"
 
 export const criarPersonagem = async (req, res) => {
     try {
-        const novoPersonagem = await Personagem.create(req.body)
+        const novoPersonagem = await Character.create(req.body)
         res.json(novoPersonagem)
     } catch (error) {
         console.log({ error: error })

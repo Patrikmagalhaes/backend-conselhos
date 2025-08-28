@@ -34,4 +34,4 @@ const characterSchema = new mongoose.Schema({
   }
 }, { timestamps: true }); // cria createdAt e updatedAt automaticamente
 
-export default mongoose.model("Personagem", characterSchema)
+export default mongoose.model("Character", characterSchema)
