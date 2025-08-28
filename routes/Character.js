@@ -1,5 +1,5 @@
 import express from "express"
-import { createCharacter, deleteCharacter, editCharacter, listCharacter } from "../controllers/personagemController.js"
+import { createCharacter, deleteCharacter, editCharacter, listCharacter } from "../controllers/Character.js"
 
 const router = express.Router()
 
