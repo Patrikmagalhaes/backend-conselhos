@@ -10,11 +10,6 @@ const chatSchema = new mongoose.Schema({
     type: mongoose.Schema.Types.ObjectId,
     ref: "Character",
     required: true
-  },
-  title: {
-    type: String,
-    required: true,
-    trim: true
   }
 }, { timestamps: true });
 

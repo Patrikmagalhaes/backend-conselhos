@@ -4,7 +4,7 @@ import mongoose from "mongoose"
 import characterRoutes from './routes/Character.js'
 import userRoutes from './routes/User.js'
 import messageRoutes from './routes/Message.js'
-
+import chatRoutes from './routes/Chat.js'
 dotenv.config()
 
 const app = express()
@@ -12,9 +12,10 @@ const PORT = 3000
 
 app.use(express.json())
 
-app.use('/character', characterRoutes)
-app.use('/user', userRoutes)
-app.use('/message', messageRoutes)
+app.use('/characters', characterRoutes)
+app.use('/users', userRoutes)
+app.use('/messages', messageRoutes)
+app.use('/chats', chatRoutes)
 
 
 const connectDB = async () => {

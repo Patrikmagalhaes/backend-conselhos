@@ -12,7 +12,7 @@ export const createMessage = async (req, res) => {
 
 export const getMessages = async (req, res) => {
     try {
-        const listMessages = await Message.find()
+        const listMessages = await Message.find({ id: req.params.chatId })
         res.json(listMessages)
     } catch (error) {
         console.log({ error: error })
