@@ -12,7 +12,7 @@ const characterSchema = new mongoose.Schema({
   },
   death: {
     type: Date,
-    required: false // pode ter personagem vivo
+    required: true
   },
   description: {
     type: String,

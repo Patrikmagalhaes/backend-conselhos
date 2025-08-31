@@ -3,7 +3,7 @@ import dotenv from "dotenv"
 import mongoose from "mongoose"
 import characterRoutes from './routes/Character.js'
 import userRoutes from './routes/User.js'
-
+import messageRoutes from './routes/Message.js'
 
 dotenv.config()
 
@@ -14,6 +14,7 @@ app.use(express.json())
 
 app.use('/character', characterRoutes)
 app.use('/user', userRoutes)
+app.use('/message', messageRoutes)
 
 
 const connectDB = async () => {

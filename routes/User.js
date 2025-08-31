@@ -7,5 +7,4 @@ router.post('/', createUser)
 
 router.get('/', listUsers)
 
-
 export default router
