@@ -4,6 +4,7 @@ export const createMessage = async (req, res) => {
     try {
         const newMessage = await Message.create(req.body)
         res.json(newMessage)
+        console.log("Mensagem criada", newMessage)
     } catch (error) {
         console.log({ error: error })
 

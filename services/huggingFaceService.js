@@ -3,7 +3,7 @@ import dotenv from 'dotenv'
 
 dotenv.config()
 
-const client = new InferenceClient(process.env.API_TOKEN);
+const client = new InferenceClient('');
 
 async function gerarResposta(prompt) {
   try {
