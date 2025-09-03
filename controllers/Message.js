@@ -1,8 +1,8 @@
 import Message from "../models/Message.js"
 
-export const createMessage = async (req, res) => {
+export const createMessage = async (data) => {
     try {
-        const newMessage = await Message.create(req.body)
+        const newMessage = await Message.create(data)
         res.json(newMessage)
         console.log("Mensagem criada", newMessage)
     } catch (error) {

@@ -5,7 +5,7 @@ dotenv.config()
 
 const client = new InferenceClient('');
 
-async function gerarResposta(prompt) {
+async function generateResponse(prompt) {
   try {
     const respostaIa = await client.chatCompletion({
       provider: "nebius",
@@ -37,4 +37,4 @@ async function gerarResposta(prompt) {
   }
 }
 
-export default gerarResposta
+export default generateResponse
