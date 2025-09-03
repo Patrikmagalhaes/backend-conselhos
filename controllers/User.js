@@ -10,12 +10,3 @@ export const createUser = async (req, res) => {
     }
 }
 
-export const listUsers = async (req, res) => {
-    try {
-        const alllistCharacter = await User.find()
-        res.json(alllistCharacter)
-        console.log(alllistCharacter)
-    } catch (error) {
-        console.log({ error: error })
-    }
-}

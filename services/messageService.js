@@ -1,4 +1,4 @@
-import Message from "../models/Message";
+import Message from "../models/Message.js";
 
 export const newMessage = async (data) => {
   try {
@@ -13,7 +13,7 @@ export const newMessage = async (data) => {
 
 export const listMessages = async (data) => {
   try {
-    const chat = await Chat.find(data.chatId);
+    const chat = await Message.find(data);
     return chat;
   } catch (error) {
     console.log({ error: error });

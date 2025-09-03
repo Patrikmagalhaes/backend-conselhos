@@ -4,11 +4,13 @@ import dotenv from "dotenv";
 dotenv.config();
 
 
+
 const client = new InferenceClient('');
 
 
 
-export const generateResponse = async (prompt) => {
+
+export const generateResponse = async (pergunta,personagem) => {
   try {
     const response = await client.chatCompletion({
       provider: "nebius",
@@ -17,11 +19,11 @@ export const generateResponse = async (prompt) => {
       messages: [
         {
           role: "system",
-          content: `Você é ${prompt.personagem}, e deve responder a todas as perguntas como se fosse essa pessoa. Use o estilo de fala, a personalidade e o ponto de vista característicos de ${prompt.personagem}.As respostas devem ter no máximo 3 frases e devem conter apenas o que ${prompt.personagem} diria, sem descrições ou narrações externas.`,
+          content: `Você é ${personagem}, e deve responder a todas as perguntas como se fosse essa pessoa. Use o estilo de fala, a personalidade e o ponto de vista característicos de ${personagem}.As respostas devem ter no máximo 3 frases e devem conter apenas o que ${personagem} diria, sem descrições ou narrações externas.`,
         },
         {
           role: "user",
-          content: prompt.pergunta,
+          content: pergunta,
         },
       ],
     });

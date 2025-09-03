@@ -1,11 +1,12 @@
-import { listMessages } from "../services/messageService";
+import { listMessages, newMessage } from "../services/messageService.js";
+import { generateResponse } from "../services/huggingFaceService.js";
 
 export const responseMessage = async (req, res) => {
   const { chatId, messageUser } = req.body;
-
+  console.log("PERGUNTA DO USUARIO", messageUser);
   try {
     await newMessage({ chatId, content: messageUser, sender: "user" }); //salva a mensagem do usuario no db
-    const responseIa = await generateResponse(content); //resposta da ia
+    const responseIa = await generateResponse(messageUser, "Karl MArxs"); //resposta da ia
     const messageCharacter = await newMessage({
       chatId,
       content: responseIa,
@@ -21,7 +22,7 @@ export const responseMessage = async (req, res) => {
 export const getMessages = async (req, res) => {
   const { chatId } = req.body;
   try {
-    const messages = await listMessages(chatId);
+    const messages = await listMessages({chatId});
     res.json(messages);
   } catch (error) {
     console.log({ error: error });
