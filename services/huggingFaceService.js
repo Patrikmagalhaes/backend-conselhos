@@ -5,7 +5,7 @@ dotenv.config();
 
 
 
-const client = new InferenceClient('');
+const client = new InferenceClient(process.env.API_TOKEN);
 
 
 
