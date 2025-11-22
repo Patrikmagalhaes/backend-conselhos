@@ -50,7 +50,7 @@ app.post('/auth/register', async (req, res) => {
     //create user
     const user = new User({
         name,
-        password,
+        passwordHash,
         email
     })
 
