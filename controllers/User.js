@@ -1,12 +1,11 @@
-import User from "../models/User.js"
+import { newUser } from "../services/newUserService"
 
 export const createUser = async (req, res) => {
-    try {
-        const newUserr = await User.create(req.body)
-        res.json(newUserr)
-    } catch (error) {
-        console.log({ error: error })
-
-    }
+try {
+    const user =  await newUser(req.body)
+    res.status(200).json({m})
+} catch (error) {
+    
 }
-
+    
+}

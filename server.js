@@ -17,12 +17,12 @@ const PORT = 3000
 app.use(express.json())
 
 app.use('/characters', characterRoutes)
-app.use('/users', userRoutes)
+app.use('/auth/register', userRoutes)
 app.use('/messages', messageRoutes)
 app.use('/chats', chatRoutes)
 
 //private route
-app.get("/user/:id", async (req, res) => {
+app.get("/user/:id", checkToken, async (req, res) => {
     const id = req.params.id
 
     if (!mongoose.Types.ObjectId.isValid(id)) {
@@ -53,50 +53,7 @@ function checkToken(req, res, next) {
     }
 }
 
-//register user
-app.post('/auth/register', async (req, res) => {
 
-    const { name, email, password } = req.body
-
-
-    //validation
-    if (!name) {
-        return res.status(422).json({ msg: "O nome é obrigatório" })
-    }
-    if (!email) {
-        return res.status(422).json({ msg: "O Email é obrigatório" })
-    }
-    if (!password) {
-        return res.status(422).json({ msg: "A senha é obrigatória" })
-    }
-
-    //check user exist
-    const userExists = await User.findOne({ email: email })
-    if (userExists) {
-        return res.status(422).json({ msg: "Email ja utilizado" })
-    }
-
-    //create password
-    const salt = await bcrypt.genSalt(12)
-    const passwordHash = await bcrypt.hash(password, salt)
-
-
-    //create user
-    const user = new User({
-        name,
-        passwordHash,
-        email
-    })
-
-    try {
-        await user.save()
-        res.status(201).json({ msg: "Usuário Criado" })
-    } catch (error) {
-        res.status(500).json({ msg: " Erro interno" })
-        console.log(error)
-    }
-
-})
 
 
 const connectDB = async () => {
