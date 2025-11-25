@@ -1,19 +1,7 @@
 import bcrypt from "bcrypt"
 
 export const newUser = async (data) => {
-
-const { name, email, password } = data
-
-    //validation
-    if (!name) {
-        return res.status(422).json({ msg: "O nome é obrigatório" })
-    }
-    if (!email) {
-        return res.status(422).json({ msg: "O Email é obrigatório" })
-    }
-    if (!password) {
-        return res.status(422).json({ msg: "A senha é obrigatória" })
-    }
+    const { name, email, password } = data.body
 
     //check user exist
     const userExists = await User.findOne({ email: email })
@@ -21,6 +9,12 @@ const { name, email, password } = data
         return res.status(422).json({ msg: "Email ja utilizado" })
     }
 
+    try {
+        const user = await newUser(req.body)
+        res.status(200).json({ m })
+    } catch (error) {
+
+    }
     //create password
     const salt = await bcrypt.genSalt(12)
     const passwordHash = await bcrypt.hash(password, salt)
@@ -40,9 +34,5 @@ const { name, email, password } = data
         res.status(500).json({ msg: " Erro interno" })
         console.log(error)
     }
-
-
-
-
 
 }
