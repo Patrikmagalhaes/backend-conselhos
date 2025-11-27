@@ -8,6 +8,7 @@ import chatRoutes from './routes/Chat.js'
 import User from "./models/User.js"
 import bcrypt from "bcrypt"
 import jwt from "jsonwebtoken"
+import { loginUser } from "./services/newUserService.js"
 
 dotenv.config()
 
@@ -70,39 +71,7 @@ const connectDB = async () => {
 
 
 //login user
-app.post('/auth/login', async (req, res) => {
-    const { email, password } = req.body
-
-    //validation
-    if (!email) {
-        return res.status(422).json({ msg: "O Email é obrigatório" })
-    }
-    if (!password) {
-        return res.status(422).json({ msg: "A senha é obrigatória" })
-    }
-
-    const user = await User.findOne({ email: email })
-    if (!user) {
-        return res.status(422).json({ msg: "Usuario não encontrado" })
-    }
-
-    //check password
-    const checkPassword = await bcrypt.compare(password, user.passwordHash)
-
-    if (!checkPassword)
-        return res.status(422).json({ msg: 'Senha invalida' })
-
-    try {
-
-        const secret = process.env.SECRET
-        const token = jwt.sign({ id: user._id }, secret)
-
-        res.status(200).json({ "msg": "Autenticado", token })
-    } catch (error) {
-        res.status(500).json({ msg: " Erro interno" })
-        console.log(error)
-    }
-})
+app.post('/auth/login', loginUser)
 
 
 
