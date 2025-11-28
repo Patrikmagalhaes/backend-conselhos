@@ -27,8 +27,9 @@ export const newUser = async (data) => {
 }
 
 export const loginUser = async (data) => {
-    const [email, password] = data
-
+    const { email, password } = data
+    console.log(data)
+    
     const user = await User.findOne({ email: email })
     if (!user) {
         throw new Error("Usuario não encontrado")
@@ -37,13 +38,13 @@ export const loginUser = async (data) => {
     //check password
     const checkPassword = await bcrypt.compare(password, user.passwordHash)
 
-    if(!checkPassword){
+    if (!checkPassword) {
         throw new Error("Senha incorreta")
     }
 
     try {
         const secret = process.env.secret
-        const token = jwt.sign({id: user._id, secret})
+        const token = jwt.sign({ id: user._id, secret })
     } catch (error) {
         throw new Error("Erro interno")
     }

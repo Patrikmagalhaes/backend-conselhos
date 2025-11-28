@@ -21,7 +21,7 @@ app.use('/characters', characterRoutes)
 app.use('/auth/register', userRoutes)
 app.use('/messages', messageRoutes)
 app.use('/chats', chatRoutes)
-
+app.use('/login', userRoutes)
 //private route
 app.get("/user/:id", checkToken, async (req, res) => {
     const id = req.params.id
@@ -70,8 +70,6 @@ const connectDB = async () => {
 }
 
 
-//login user
-app.post('/auth/login', loginUser)
 
 
 
